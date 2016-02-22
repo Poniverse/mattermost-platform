@@ -58,6 +58,30 @@ export default class ChooseAuthPage extends React.Component {
             );
         }
 
+        if (global.window.mm_config.EnableSignUpWithPoniverse === 'true') {
+            buttons.push(
+                    <a
+                        className='btn btn-custom-login poniverse btn-full'
+                        key='poniverse'
+                        href='#'
+                        onClick={
+                            (e) => {
+                                e.preventDefault();
+                                this.props.updatePage('poniverse');
+                            }
+                        }
+                    >
+                        <span className='icon' />
+                        <span>
+                            <FormattedMessage
+                                id='choose_auth_page.poniverseCreate'
+                                defaultMessage='Create new team with Poniverse Account'
+                            />
+                        </span>
+                    </a>
+            );
+        }
+
         if (global.window.mm_config.EnableSignUpWithEmail === 'true') {
             buttons.push(
                     <a

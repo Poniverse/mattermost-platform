@@ -299,12 +299,31 @@ class SecurityTab extends React.Component {
                 );
             }
 
+            let poniverseOption;
+            if (global.window.mm_config.EnableSignUpWithPoniverse === 'true' && user.auth_service === '') {
+                poniverseOption = (
+                    <div>
+                        <a
+                            className='btn btn-primary'
+                            href={'/' + teamName + '/claim?email=' + encodeURIComponent(user.email) + '&new_type=' + Constants.PONIVERSE_SERVICE}
+                        >
+                            <FormattedMessage
+                                id='user.settings.security.switchPoniverse'
+                                defaultMessage='Switch to using Poniverse SSO'
+                            />
+                        </a>
+                        <br/>
+                    </div>
+                );
+            }
+
             inputs.push(
                 <div key='userSignInOption'>
                    {emailOption}
                    {gitlabOption}
                    <br/>
                    {googleOption}
+                   {poniverseOption}
                 </div>
             );
 
@@ -368,6 +387,7 @@ class SecurityTab extends React.Component {
         let numMethods = 0;
         numMethods = global.window.mm_config.EnableSignUpWithGitLab === 'true' ? numMethods + 1 : numMethods;
         numMethods = global.window.mm_config.EnableSignUpWithGoogle === 'true' ? numMethods + 1 : numMethods;
+        numMethods = global.window.mm_config.EnableSignUpWithPoniverse === 'true' ? numMethods + 1 : numMethods;
 
         if (global.window.mm_config.EnableSignUpWithEmail && numMethods > 0) {
             signInSection = this.createSignInSection();
