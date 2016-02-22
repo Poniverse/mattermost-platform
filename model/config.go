@@ -21,6 +21,7 @@ const (
 
 	SERVICE_GITLAB = "gitlab"
 	SERVICE_GOOGLE = "google"
+	SERVICE_PONIVERSE = "poniverse"
 )
 
 type ServiceSettings struct {
@@ -181,6 +182,7 @@ type Config struct {
 	SupportSettings   SupportSettings
 	GitLabSettings    SSOSettings
 	GoogleSettings    SSOSettings
+	PoniverseSettings SSOSettings
 	LdapSettings      LdapSettings
 }
 
@@ -199,6 +201,8 @@ func (o *Config) GetSSOService(service string) *SSOSettings {
 		return &o.GitLabSettings
 	case SERVICE_GOOGLE:
 		return &o.GoogleSettings
+	case SERVICE_PONIVERSE:
+		return &o.PoniverseSettings
 	}
 
 	return nil

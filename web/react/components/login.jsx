@@ -57,6 +57,24 @@ export default class Login extends React.Component {
            );
         }
 
+        if (global.window.mm_config.EnableSignUpWithPoniverse === 'true') {
+            loginMessage.push(
+                    <a
+                        className='btn btn-custom-login poniverse'
+                        key='poniverse'
+                        href={'/' + teamName + '/login/poniverse'}
+                    >
+                        <span className='icon' />
+                        <span>
+                            <FormattedMessage
+                                id='login.poniverse'
+                                defaultMessage='with Poniverse'
+                            />
+                        </span>
+                    </a>
+           );
+        }
+
         const extraParam = Utils.getUrlParameter('extra');
         let extraBox = '';
         if (extraParam) {

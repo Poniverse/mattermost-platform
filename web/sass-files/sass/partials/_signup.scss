@@ -209,6 +209,18 @@
                     background-image: url("../images/googleLogo.png");
                 }
             }
+            &.poniverse {
+                background: #50D6F4;
+                &:hover {
+                    background: darken(#50D6F4, 10%);
+                }
+                span {
+                    vertical-align: middle;
+                }
+                .icon {
+
+                }
+            }
             &.email {
                 background: #2389D7;
                 &:hover {
